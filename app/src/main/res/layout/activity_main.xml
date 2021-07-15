@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/user1Pic"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/player1Name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Player1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@id/pokeball_a1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballA1"
+            android:src="@drawable/pokeball"
+             />
+
+        <ImageView
+            android:id="@id/pokeball_a2"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+
+            android:contentDescription="pokeballA2" />
+
+        <ImageView
+            android:id="@id/pokeball_a3"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+
+            android:contentDescription="pokeballA3" />
+
+        <ImageView
+            android:id="@+id/pokeball_a4"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballA4" />
+
+        <ImageView
+            android:id="@+id/pokeball_a5"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballA5" />
+
+        <ImageView
+            android:id="@id/pokeball_a6"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballA6" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pokeball"/>
+
+    <ImageView
+        android:id="@+id/main_poke2"
+        android:layout_margin="10dp"
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="100dp"
+        android:src="@drawable/pokeball"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@id/pokeball_b1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB1"
+            android:src="@drawable/pokeball"
+             />
+
+        <ImageView
+            android:id="@id/pokeball_b2"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB2" />
+
+        <ImageView
+            android:id="@id/pokeball_b3"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB3" />
+
+        <ImageView
+            android:id="@+id/pokeball_b4"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB4" />
+
+        <ImageView
+            android:id="@+id/pokeball_b5"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB5" />
+
+        <ImageView
+            android:id="@id/pokeball_b6"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="wrap_content"
+            android:contentDescription="pokeballB6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/user2_pic"
+            android:layout_width="50dp"
+            android:src="@drawable/pokeball"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/player2_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Player2"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/poke_name"
+        android:layout_margin="0dp"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_gravity="center"
+        android:layout_width="125dp"
+        android:layout_height="125dp"/>
+
+    <Button
+        android:id="@+id/switch_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="switch"/>
+
+    <ImageView
+        android:id="@+id/status_img_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

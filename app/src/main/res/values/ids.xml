@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="pokeball_a1" type="id" />
+    <item name="pokeball_a2" type="id" />
+    <item name="pokeball_a3" type="id" />
+    <item name="pokeball_a4" type="id" />
+    <item name="pokeball_a5" type="id" />
+    <item name="pokeball_a6" type="id" />
+    <item name="pokeball_b1" type="id" />
+    <item name="pokeball_b2" type="id" />
+    <item name="pokeball_b3" type="id" />
+    <item name="pokeball_b4" type="id" />
+    <item name="pokeball_b5" type="id" />
+    <item name="pokeball_b6" type="id" />
+</resources>
