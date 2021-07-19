@@ -7,14 +7,14 @@ import androidx.room.*
 @Dao
 interface PokeDao {
     @Query("Select * from DatabasePokemon")
-    fun getVideos(): LiveData<List<DatabasePokemon>>
+    fun getPokemons(): LiveData<List<DatabasePokemon>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg videos: DatabasePokemon)
+    fun insertAll(vararg pokemon: DatabasePokemon)
 }
 
 
-@Database(entities = [DatabasePokemon::class], version =1)
+@Database(entities = [DatabasePokemon::class], version =1, exportSchema = false)
 abstract class PokemonDatabase: RoomDatabase() {
     abstract val pokeDao : PokeDao
 }
@@ -26,7 +26,7 @@ fun getDatabase(context: Context): PokemonDatabase {
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room.databaseBuilder(context.applicationContext,
                 PokemonDatabase::class.java,
-                "").build()
+                "PokemonDatabase").build()
         }
     }
     return INSTANCE

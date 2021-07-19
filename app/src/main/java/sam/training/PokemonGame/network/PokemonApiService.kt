@@ -12,8 +12,6 @@ import sam.training.PokemonGame.domain.*
 
 const val BASE_URL = "https://pokeapi.co/api/v2/"
 
-
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

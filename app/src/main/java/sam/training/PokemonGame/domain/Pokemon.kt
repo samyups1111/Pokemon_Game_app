@@ -6,10 +6,8 @@ data class Pokemon(
     val id: Int,
     val order: Int,
     val name : String,
-    val sprites : Sprites
-)
-
-data class Sprites(
     val front_default : String,
     val back_default : String
 )
+
+
