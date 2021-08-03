@@ -1,18 +1,30 @@
 package sam.training.PokemonGame.ui
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import sam.training.PokemonGame.viewmodels.MainViewModel
 import sam.training.PokemonGame.R
 import sam.training.PokemonGame.bindImage
+import sam.training.PokemonGame.domain.Pokemon
+import sam.training.PokemonGame.recyclerview.RecyclerViewAdapterPlayer2
+import sam.training.PokemonGame.util.sendNotification
 
 class MainActivity : AppCompatActivity() {
+
+
+
 
     private lateinit var imageView : ImageView
     private lateinit var statusImgView : ImageView
@@ -33,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var pokeName : TextView
     private lateinit var switchButton : Button
-    private lateinit var mainPoke2 : ImageView
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var pokeAdapter2 : RecyclerViewAdapterPlayer2
 
     private val mainViewModel: MainViewModel by lazy {
         ViewModelProvider(this, MainViewModel.Factory(this.application)).get(MainViewModel::class.java)
@@ -59,24 +72,36 @@ class MainActivity : AppCompatActivity() {
         pokeballB5 = findViewById(R.id.pokeball_b5)
         pokeballB6 = findViewById(R.id.pokeball_b6)
 
+        recyclerView = findViewById(R.id.recycler_view_team2)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+        pokeAdapter2 = RecyclerViewAdapterPlayer2(mainViewModel)
+        recyclerView.adapter = pokeAdapter2
+        pokeAdapter2.updateList(Pokemon(0, 0, "n/a", "n/a", "n/a"))
+
         pokeName = findViewById(R.id.poke_name)
         switchButton = findViewById(R.id.switch_button)
-        mainPoke2 = findViewById(R.id.main_poke2)
 
         initObservers()
+        initItemTouchHelper(recyclerView)
+        createChannel("test", "Test")
 
 
         switchButton.setOnClickListener {
 
             Log.d("TAG", "MA Team1 Pokemon 1" + mainViewModel.player1Team.value?.get(0)?.name)
-            bindImage(mainPoke2, mainViewModel.currentPoke.value?.back_default)
+            //bindImage(mainPoke2, mainViewModel.currentPoke.value?.back_default)
+            mainViewModel.currentPoke.value?.let { currentPokemon -> pokeAdapter2.updateList(currentPokemon) }
+
+
+            mainViewModel.notificationManager.sendNotification("Hi this is a test", application)
         }
 
         mainViewModel.pokemonList.observe(this, Observer { pokemonList ->
             mainViewModel.makeRandomTeams()
-
-
         })
+
+
 
     }
 
@@ -135,7 +160,57 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.selectedPoke(Team2[5])
             }
         })
+    }
 
+    private fun createChannel(channelId: String, channelName: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_LOW
+            )
+
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.RED
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = "Testing Notification system"
+
+            val notificationManager = this.getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+    }
+
+    private fun initItemTouchHelper(recyclerView: RecyclerView) {
+        val itemTouchHelperCallback = object: ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.LEFT or
+                    ItemTouchHelper.RIGHT or
+                    ItemTouchHelper.UP or
+                    ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or
+                    ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                recyclerView.adapter?.notifyItemMoved(
+                    viewHolder.adapterPosition,
+                    target.adapterPosition
+                )
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val currentPokemonListPlayer2 = pokeAdapter2.currentPokeList
+                //mainViewModel.delete(currentPokemonListPlayer2[viewHolder.adapterPosition])
+                //mainAdapter.notifyDataSetChanged()
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 }

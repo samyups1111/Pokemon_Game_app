@@ -1,12 +1,20 @@
 package sam.training.PokemonGame.viewmodels
 
 import android.app.Application
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import sam.training.PokemonGame.database.getDatabase
 import sam.training.PokemonGame.domain.Pokemon
 import sam.training.PokemonGame.repository.PokemonRepository
+import sam.training.PokemonGame.util.sendNotification
+import java.lang.NullPointerException
 
 enum class PokemonApiStatus { LOADING, ERROR, DONE }
 
@@ -26,14 +34,27 @@ class MainViewModel(application: Application): ViewModel() {
     private val _currentPoke = MutableLiveData<Pokemon>()
     val currentPoke : LiveData<Pokemon>
         get() = _currentPoke
+    val pokemonList = pokeRepository.pokemonList
+
+    val notificationManager = ContextCompat.getSystemService(
+        application,
+        NotificationManager::class.java
+    ) as NotificationManager
 
     init {
         viewModelScope.launch {
-            if (pokemonList.value?.size == 0) pokeRepository.refreshPokemonList()
+            //if (pokemonList.value?.size == 0) pokeRepository.refreshPokemonList()
+            pokeRepository.refreshPokemonList()
+
+            try {
+                makeRandomTeams()
+                Log.d("TAG", "VM PokemonList.size = ${pokemonList.value?.size}")
+                Log.d("TAG", "VM player1Team = ${player1Team.value?.size}")
+            } catch (e: NullPointerException) {
+                Log.d("TAG", "VM NullPointerException")
+            }
         }
     }
-
-    val pokemonList = pokeRepository.pokemonList
 
     fun makeRandomTeams() {
         val tempList1 = mutableListOf<Pokemon>()
@@ -41,6 +62,7 @@ class MainViewModel(application: Application): ViewModel() {
         for (i in 1..6) {
             tempList1.add(pokemonList.value?.random()!!)
             tempList2.add(pokemonList.value?.random()!!)
+            Log.d("TAG", "VM templist1.size = ${tempList1.size}")
         }
         _player1Team.value = tempList1
         _player2Team.value = tempList2
