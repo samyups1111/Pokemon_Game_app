@@ -84,11 +84,12 @@
         android:layout_height="100dp"
         android:src="@drawable/pokeball"/>
 
-    <ImageView
-        android:id="@+id/main_poke2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_team2"
         android:layout_margin="10dp"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_gravity="center"
+        android:orientation="horizontal"
         android:layout_height="100dp"
         android:src="@drawable/pokeball"/>
 

@@ -29,6 +29,8 @@ class PokemonRepository(private val database: PokemonDatabase) {
             val result = pokeList.awaitAll()
 
             database.pokeDao.insertAll(*result.asDatabasemodel())
+            Log.d("TAG", "RP resultList = ${result.size}")
+            Log.d("TAG", "RP pokemonList = ${pokemonList.value?.size}")
         }
     }
 }

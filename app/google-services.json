@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "399548970194",
+    "project_id": "pokemonbattle-d39e0",
+    "storage_bucket": "pokemonbattle-d39e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399548970194:android:fb7930414a2c59821fa90b",
+        "android_client_info": {
+          "package_name": "sam.training.thisorthat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399548970194-2alqrcgirijkiem62tr4l2sf3kmi7uir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sam.training.thisorthat",
+            "certificate_hash": "22f613a1590fa2b1f55b2bc5a7c695561f7f7f2c"
+          }
+        },
+        {
+          "client_id": "399548970194-39c0bvqinug21q0r894r2is0dos6v2bo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm5NenFPzeAkzp9HuGcc2UQs4HL_IhuZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399548970194-39c0bvqinug21q0r894r2is0dos6v2bo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
