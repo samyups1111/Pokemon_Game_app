@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import sam.training.PokemonGame.viewmodels.MainViewModel
 import sam.training.PokemonGame.R
 import sam.training.PokemonGame.bindImage
@@ -21,7 +20,7 @@ import sam.training.PokemonGame.domain.Pokemon
 import sam.training.PokemonGame.recyclerview.RecyclerViewAdapterPlayer2
 import sam.training.PokemonGame.util.sendNotification
 
-class MainActivity : AppCompatActivity() {
+class BattleActivity : AppCompatActivity() {
 
 
 
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_battle)
         imageView = findViewById(R.id.image_view)
         statusImgView = findViewById(R.id.status_img_view)
         pokeballA1 = findViewById(R.id.pokeball_a1)
