@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         const val SIGN_IN_REQUEST_CODE = 1001 }
 
     private lateinit var signInButton : Button
-    private lateinit var settingsButton : TextView
+    private lateinit var settingsButton : Button
     private lateinit var battleButton : Button
     private val viewModel by viewModels<LoginViewModel>()
 
@@ -86,8 +86,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observeAuthenticationState() {
-        val good = "good"
-        val bad = "bad"
 
         viewModel.authenticationState.observe(this, Observer { authenticationState ->
             when (authenticationState) {
